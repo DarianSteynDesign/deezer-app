@@ -1,1 +1,6 @@
-<p>artist-view works!</p>
+<h3>Top Artists</h3>
+
+<div class="artist-container" *ngFor="let artist of artistList">
+    <p>{{ artist.name }}</p>
+    <img src='{{ artist.picture_big }}'>
+</div>

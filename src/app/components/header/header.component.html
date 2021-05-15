@@ -1,1 +1,13 @@
-<p>header works!</p>
+<div class="header-container">
+    <div class="logo-container">
+        <img src="https://www.vhv.rs/dpng/d/547-5476530_deezer-logo-download-vector-deezer-new-logo-png.png">
+    </div>
+
+    <input 
+        type="text" 
+        placeholder="enter key word"
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="searchArtist()">
+
+        <p>{{searchTerm}}</p>
+</div>
