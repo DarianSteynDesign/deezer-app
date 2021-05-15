@@ -15,4 +15,12 @@ export class SearchService {
   public searchArtists(searchTerm: string): any {
     return this.http.get('https://api.deezer.com/search/artist?q=' + searchTerm);
   }
+
+  public getArtistAlbums(artistId: number): any {
+    return this.http.get('https://api.deezer.com/artist/' + artistId + '/albums');
+  }
+
+  public getArtistTopSongs(artistId: number): any {
+    return this.http.get('https://api.deezer.com/artist/' + artistId + '/top');
+  }
 }
