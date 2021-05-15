@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'artist-view',
   templateUrl: './artist-view.component.html',
-  styleUrls: ['./artist-view.component.scss']
+  styleUrls: ['./artist-view.component.scss'],
+  providers: [DatePipe]
 })
 export class ArtistViewComponent implements OnInit {
 
@@ -19,7 +21,11 @@ export class ArtistViewComponent implements OnInit {
 
   public selectedArtistId: number = 0;
 
-  constructor(public searchService: SearchService, public sharedService: SharedService) { }
+  constructor(
+    public searchService: SearchService, 
+    public sharedService: SharedService,
+    private datePipe: DatePipe
+    ) { }
 
   ngOnInit(): void {
     this.subscribeTopArtists();
