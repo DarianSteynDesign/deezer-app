@@ -1,0 +1,35 @@
+$small: 300px;
+$medium: 900px;
+
+.header-container {
+    display: flex;
+    height: 80px;
+    background: rgb(238, 238, 238);
+    border-bottom: 10px solid #333;
+
+    .logo-container {
+        margin: auto auto auto 10px;
+
+        .logo {
+            cursor: pointer;
+            height: 50px;
+
+            @media screen and (min-width: $small) {
+                height: 35px;
+            }
+        }
+    }
+
+    .search-input {
+        margin: auto 10px auto auto;
+        height: 25px;
+        border-radius: 15px;
+        border: 1px solid grey;
+        outline: none;
+        padding-left: 10px;
+
+        &:focus {
+            border: 1px solid orange;
+        }
+    }
+}

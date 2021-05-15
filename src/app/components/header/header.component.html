@@ -1,11 +1,14 @@
 <div class="header-container">
     <div class="logo-container">
-        <img src="https://www.vhv.rs/dpng/d/547-5476530_deezer-logo-download-vector-deezer-new-logo-png.png">
+        <a href="/">
+            <img class="logo" src="../../../assets/images/deezer-logo.png">
+        </a>
     </div>
 
-    <input 
-        type="text" 
-        placeholder="enter key word"
+    <input
+        class="search-input" 
+        type="search" 
+        placeholder="Search for artist"
         [(ngModel)]="searchTerm"
         (keyup.enter)="searchArtist()">
 </div>

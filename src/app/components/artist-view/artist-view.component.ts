@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { DatePipe } from '@angular/common';
+import { ResponseModel } from 'src/app/models/artist-response.model';
 
 @Component({
   selector: 'artist-view',
@@ -33,9 +34,8 @@ export class ArtistViewComponent implements OnInit {
   }
 
   public subscribeTopArtists(): void {
-    this.searchService.getTopArtists().subscribe((response: any) => {
+    this.searchService.getTopArtists().subscribe((response: ResponseModel) => {
       this.artistList = response.data;
-      console.log(this.artistList);
     });
   }
 
@@ -43,7 +43,6 @@ export class ArtistViewComponent implements OnInit {
     this.sharedService.searchData.subscribe((response:any) => {
       if(response){
         this.artistSearch = response;
-        console.log('subscribeToArtistSearch', this.artistSearch);
         this.artistList = this.artistSearch;
         this.showSearchResults = true;
       }
@@ -51,6 +50,7 @@ export class ArtistViewComponent implements OnInit {
   }
 
   public getArtistInfo(artistId: number): void {
+    window.scroll(0, 0);
     this.displayExtraInfo = true;
     this.selectedArtistId = artistId;
 
@@ -59,17 +59,19 @@ export class ArtistViewComponent implements OnInit {
   }
 
   public getArtistAlbums(artistId: number): void {
-    this.searchService.getArtistAlbums(artistId).subscribe((response: any) => {
+    this.searchService.getArtistAlbums(artistId).subscribe((response: ResponseModel) => {
       this.artistAlbums = response.data;
-      console.log('Artist albums - ', this.artistAlbums);
     });
   }
 
   public getArtistTopSongs(artistId: number): void {
-    this.searchService.getArtistTopSongs(artistId).subscribe((response: any) => {
+    this.searchService.getArtistTopSongs(artistId).subscribe((response: ResponseModel) => {
       this.artistTopSongs = response.data;
-      console.log('Artist top songs - ', this.artistTopSongs);
     });
+  }
+
+  public closeArtistOverlay(): void {
+    this.displayExtraInfo = !this.displayExtraInfo;
   }
 
 }

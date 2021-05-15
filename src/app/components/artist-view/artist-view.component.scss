@@ -1,0 +1,295 @@
+$white: white;
+$overlayBG: #000000e3;
+$grey: grey;
+$lightBlack: #333333;
+$headingBgBlack: #0e0e0e;
+
+$small: 300px;
+$medium: 900px;
+
+.deezer-heading {
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px 0px 10px 0;
+}
+
+//Common artist view styles
+
+.artist-search-list, .artist-list-container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.artist-container {
+    width: 18%;
+    margin: 10px 10px;
+    
+    .artist-image {
+        width: 100%;
+        border-radius: 0px 0px 10px 10px;
+    }
+}
+
+//Top Artist Styles
+
+.artist-list-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+
+  .artist-container {
+    width: 18%;
+    margin: 10px 10px;
+
+    @media screen and (min-width: $small) {
+        width: 100%;
+    }
+
+    .top-artist-info-container {
+        display: flex;
+        background: $lightBlack;
+        color: $white;
+        padding: 10px;
+        border-radius: 10px 10px 0px 0px;
+
+        .top-artist-text {
+            &.name {
+                margin: auto 10px auto auto;
+            }
+
+            &.position {
+                font-weight: 600;
+                font-size: 1.3rem;
+                margin: auto auto auto 10px;
+            }
+        }
+    }
+
+    .artist-image {
+        width: 100%;
+        border-radius: 0px 0px 10px 10px;
+    }
+  }
+}
+
+//Artist Search Styles
+
+.artist-search-container {
+    margin: 10px 40px;
+
+    @media screen and (min-width: $small) {
+        margin: 10px 20px;
+    }
+
+    &.extraInfoActive {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        width: auto;
+        left: 0;
+        height: fit-content;
+
+        @media screen and (min-width: $small) {
+            top: 50px;
+        }
+
+        .extra-info-position-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .artist-container {
+            &.inactive {
+                z-index: -1;
+            }
+        }
+    }
+
+    .artist-container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        cursor: pointer;
+
+        .extra-info-expand {
+            display: none;
+        }
+
+        &.active {
+            flex-direction: row;
+            z-index: 2;
+            flex: 0 0 65%;
+            margin: auto 0 auto auto;
+
+            @media screen and (min-width: $small) {
+                flex-direction: column;
+                z-index: 2;
+                flex: 0 0 100%;
+                margin: auto;
+            }
+
+            .artist-heading {
+                padding: 20px 60px;
+                flex: 0 0 45%;
+                order: 1;
+                border-radius: 0;
+                background: $headingBgBlack;
+
+                .heading {
+                    font-size: 2rem;
+                }
+            }
+
+            .artist-image {
+                order: 3;
+            }
+
+            .extra-info-expand {
+                display: block;
+            }
+
+            .artist-info-container {
+                display: none;
+            }
+        }
+
+        .artist-heading {
+            background: $lightBlack;
+            color: $white;
+            padding: 10px;
+            border-radius: 10px 10px 0px 0px;
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.3rem;
+            padding-left: 10px;
+        }
+
+        .artist-image {
+            border-radius: 0px;
+        }
+
+        .artist-info-container {
+            display: flex;
+            background: $lightBlack;
+            color: $white;
+            padding: 30px 10px;
+            border-radius: 0px 0px 10px 10px;
+
+            .artist-text {
+                &.fans {
+                    margin: auto 10px auto auto;
+                }
+    
+                &.albums {
+                    margin: auto auto auto 10px;
+                }
+            }
+        }
+    }
+
+    .top-tracks-container {
+        flex: 0 0 23%;
+        background: $grey;
+        padding: 10px 30px 10px 40px;
+        margin: 0 auto 0 0;
+
+        @media screen and (min-width: $small) {
+            flex: 0 0 77%;
+        }
+
+        .top-track-heading {
+            position: relative;
+            text-align: center;
+            color: $white;
+            font-weight: 600;
+            font-size: 1.5rem;
+            z-index: 2;
+            border-bottom: 1px solid $white;
+            margin: 0;
+            padding: 10px 0px 20px 0;
+        }
+
+        .artist-extra-info-container {
+            position: relative;
+            z-index: 2;
+            color: $white;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+    
+            .song-list-item-container{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    .artist-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: $overlayBG;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+
+        .overlay-close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            font-size: 1.5rem;
+            z-index: 3;
+            color: $white;
+            cursor: pointer;
+
+            @media screen and (min-width: $small) {
+                top: 0px;
+                right: 15px;
+            }
+        }
+    }
+
+    .album-list-container {
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+        flex: 0 0 93%;
+        justify-content: space-around;
+        margin: 50px auto 0px auto;
+        border-top: 1px solid $white;
+
+        .albums {
+            width: 18%;
+
+            @media screen and (min-width: $small) {
+                width: 100%;
+            }
+
+            .album-cover {
+                width: 100%;
+            }
+
+            .album-text {
+                color: $white;
+
+                &.title {
+                    font-weight: 600;
+                }
+
+                &.fans {
+                    font-size: 0.8rem;
+                }
+
+                &.date {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}
